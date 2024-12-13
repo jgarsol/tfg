@@ -1,0 +1,49 @@
+package com.rule
+
+import aurora.rec.model.Hogar
+import function aurora.rec.Main.helper;
+import java.util.List;
+import java.util.Map;
+
+/**rule "Vives en Madrid?"
+	when
+		hogarObject: Hogar(ciudadHogar == "Madrid")
+	then
+		hogarObject.setMessage("Madrid!!!");
+end*/
+
+/**rule "Consumo distinto al promedio"
+when
+    $hogar: Hogar($codigoPostal: codigoPostal, $consumo: consumoElectricidadDiario)
+    $mediaConsumo: Double() from accumulate(
+        Hogar(codigoPostal == $codigoPostal, $consumoHogar: consumoElectricidadDiario),
+        average($consumoHogar)
+    )
+    eval($consumo != $mediaConsumo)
+then
+    $hogar.setMessage("El consumo diario de electricidad está fuera del promedio para su código postal");
+end*/
+
+rule "Consumo superior al promedio"
+when
+    $hogar: Hogar($codigoPostal: codigoPostal, $consumo: consumoElectricidadDiario)
+    $mediaConsumo: Double() from accumulate(
+        Hogar(codigoPostal == $codigoPostal, $consumoHogar: consumoElectricidadDiario),
+        average($consumoHogar)
+    )
+    eval($consumo > $mediaConsumo)
+then
+    $hogar.setMessage("El consumo diario de electricidad es superior al promedio para su código postal! QUÉ MAL!!");
+end
+
+rule "Consumo inferior o igual al promedio"
+when
+    $hogar: Hogar($codigoPostal: codigoPostal, $consumo: consumoElectricidadDiario)
+    $mediaConsumo: Double() from accumulate(
+        Hogar(codigoPostal == $codigoPostal, $consumoHogar: consumoElectricidadDiario),
+        average($consumoHogar)
+    )
+    eval($consumo <= $mediaConsumo)
+then
+    $hogar.setMessage("El consumo diario de electricidad es inferior o igual al promedio para su código postal! QUÉ BIEN!!");
+end
