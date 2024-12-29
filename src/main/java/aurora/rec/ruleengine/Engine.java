@@ -37,7 +37,7 @@ public class Engine {
 
         for (int i = 0; i < 10; i++) {
             Hogar hogar = new Hogar();
-            hogar.generarCodigoPostal();
+            hogar.rellenarHogar(hogar);
             e.run(hogar);
         }
 
@@ -66,16 +66,16 @@ public class Engine {
          * y las medias de consumo por codigo postal
          */
 
-        System.out.println("Hogares generados: " + listaHogares.size());
+        System.out.println("Hogares generados: " + listaHogares.size()+ "\n");
         for (Hogar hogar : listaHogares) {
             System.out.println("Nombre del propietario: " + hogar.getNombre());
             System.out.println("Edad del propietario: " + hogar.getEdad());
             System.out.println("Ciudad del Hogar: " + hogar.getCiudadHogar());
             System.out.println("Codigo Postal: " + hogar.getCodigoPostal());
             System.out.println("Numero de Personas en el Hogar: " + hogar.getNumeroPersonasHogar());
-            System.out.println("Tipo de Calefaccion: " + hogar.getTipoCalefaccion());
-            System.out.println("Consumo de Electricidad Diario: " + hogar.getConsumoElectricidadDiario() + " kWh");
-            System.out.println("Modalidad de Transporte Diario: " + hogar.getModalidadTransporteDiario());
+            //System.out.println("Tipo de Calefaccion: " + hogar.getTipoCalefaccion());
+            System.out.println("Consumo de Electricidad Diario: " + hogar.getConsumoElectricidadDiario() + " kWh" + "\n");
+            //System.out.println("Modalidad de Transporte Diario: " + hogar.getModalidadTransporteDiario());
         }
 
         for (Map.Entry<String, List<Double>> entry : consumosPorCodigoPostal.entrySet()) {
@@ -101,6 +101,7 @@ public class Engine {
 
         e.firerules();
 
+        System.out.println();
         for (Hogar hogar : listaHogares) {
             System.out.println("Propietario: " + hogar.getNombre() + ", Mensaje: " + hogar.getMessage());
         }

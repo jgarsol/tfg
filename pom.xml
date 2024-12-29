@@ -40,6 +40,30 @@
             <artifactId>drools-mvel</artifactId>
             <version>9.44.0.Final</version>
         </dependency>
+
+
+
+       <dependency>
+    <groupId>org.eclipse.jetty</groupId>
+    <artifactId>jetty-server</artifactId>
+    <version>9.4.3.v20170317</version>
+</dependency>
+<dependency>
+    <groupId>org.eclipse.jetty</groupId>
+    <artifactId>jetty-servlet</artifactId>
+    <version>9.4.3.v20170317</version>
+</dependency>
+
+        <!-- Servlet API Dependency (Java Servlet specification) -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>5.0.0</version>
+            <scope>provided</scope>
+        </dependency>        
+
+
+
         
     </dependencies>	
 </project>

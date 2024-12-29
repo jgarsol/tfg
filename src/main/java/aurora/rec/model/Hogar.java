@@ -13,45 +13,51 @@ public class Hogar {
     private String ciudadHogar;
     private int codigoPostal;
     private int numeroPersonasHogar;
-    private String tipoCalefaccion;
+    //private String tipoCalefaccion;
     private double consumoElectricidadDiario;
     //private String modalidadTransporteTrabajo; //es esto redundante?
-    private String modalidadTransporteDiario;
+    //private String modalidadTransporteDiario;
     private String message;
     private static List<Hogar> hogares = new ArrayList<>();
     
-    public Hogar() {
-        String[] nombres = {"Luis", "Juan", "Gonzalo", "Maria", "Ana"};
-        String[] ciudades = {"Madrid", "Santander", "Valencia", "Sevilla", "Zaragoza"};
-        String[] tiposCalefaccion = {"Gas", "Electrica", "CombustiblesFosiles", "Biomasa"};
-        String[] transportes = {"Coche", "Taxi", "Bus", "Metro", "Bicicleta"};
-
-        Random random = new Random();
-        
-        this.nombre = nombres[random.nextInt(nombres.length)];
-        this.edad = 18 + random.nextInt(67);
-        this.ciudadHogar = ciudades[random.nextInt(ciudades.length)];
-        //this.codigoPostal = 10000 + random.nextInt(500);
-        this.numeroPersonasHogar = 1 + random.nextInt(5);
-        this.tipoCalefaccion = tiposCalefaccion[random.nextInt(tiposCalefaccion.length)];
-        this.consumoElectricidadDiario = Math.round((8 + random.nextDouble() * 4.00) * 100.0) / 100.0; //IDAE para encontrar datos reales.
-        this.modalidadTransporteDiario = transportes[random.nextInt(transportes.length)];
-
+    public Hogar() {        
+        this.nombre = "Vacio";
+        this.edad = 99999;
+        this.ciudadHogar = "Vacio";
+        this.numeroPersonasHogar = 99999;
+        this.consumoElectricidadDiario = 99999;
         hogares.add(this);
     }
 
-    public Hogar(String nombre, int edad, String ciudadHogar, int codigoPostal, int numeroPersonasHogar, String tipoCalefaccion, double consumoElectricidadDiario, String modalidadTransporteDiario) {
+    public Hogar(String nombre, int edad, String ciudadHogar, int codigoPostal, int numeroPersonasHogar, double consumoElectricidadDiario) {
         this.nombre = nombre;
         this.edad = edad;
         this.ciudadHogar = ciudadHogar;
         this.codigoPostal = codigoPostal;
         this.numeroPersonasHogar = numeroPersonasHogar;
-        this.tipoCalefaccion = tipoCalefaccion;
         this.consumoElectricidadDiario = consumoElectricidadDiario;
-        this.modalidadTransporteDiario = modalidadTransporteDiario;
     }
 
-    public void generarCodigoPostal() {
+    public void rellenarHogar(Hogar hogar){
+        if (hogar.getNombre().equals("Vacio")) {
+            String[] nombres = {"Luis", "Juan", "Gonzalo", "Maria", "Ana"};
+            String[] ciudades = {"Madrid", "Santander", "Valencia", "Sevilla", "Zaragoza"};
+            Random random = new Random();
+            
+            hogar.setNombre(nombres[random.nextInt(nombres.length)]);
+            hogar.setEdad(18 + random.nextInt(67));
+            hogar.setCiudadHogar(ciudades[random.nextInt(ciudades.length)]);
+            hogar.generarCodigoPostal();
+            hogar.setNumeroPersonasHogar(1 + random.nextInt(5));
+            hogar.calcularConsumo(); //IDAE para encontrar datos reales.
+            hogar.generarCodigoPostal();
+        }
+        else{
+            System.out.println("El hogar ya esta relleno");
+        }
+    }
+
+    private void generarCodigoPostal() {
         switch (this.ciudadHogar) {
             case "Madrid":
                 this.codigoPostal = 28000 + new Random().nextInt(4);
@@ -74,16 +80,35 @@ public class Hogar {
         }
     }
 
+    public void calcularConsumo() {
+        double baseConsumo = 7.0;
+        double variacion = new Random().nextDouble() * 3.0; // Variación aleatoria entre 0 y 3
+        this.consumoElectricidadDiario = baseConsumo + this.numeroPersonasHogar * (1 + new Random().nextDouble()) + variacion;
+        this.consumoElectricidadDiario = Math.round(this.consumoElectricidadDiario * 100.0) / 100.0;
+    }
+
     public String getNombre() {
         return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getEdad() {
         return edad;
     }
 
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
     public String getCiudadHogar() {
         return ciudadHogar;
+    }
+
+    public void setCiudadHogar(String ciudadHogar) {
+        this.ciudadHogar = ciudadHogar;
     }
 
     public int getCodigoPostal() {
@@ -94,16 +119,16 @@ public class Hogar {
         return numeroPersonasHogar;
     }
 
-    public String getTipoCalefaccion() {
-        return tipoCalefaccion;
+    public void setNumeroPersonasHogar(int numeroPersonasHogar) {
+        this.numeroPersonasHogar = numeroPersonasHogar;
     }
 
     public double getConsumoElectricidadDiario() {
         return consumoElectricidadDiario;
     }
 
-    public String getModalidadTransporteDiario() {
-        return modalidadTransporteDiario;
+    public void setConsumoElectricidadDiario(double consumoElectricidadDiario) {
+        this.consumoElectricidadDiario = consumoElectricidadDiario;
     }
 
     public static List<Hogar> getHogares() {
