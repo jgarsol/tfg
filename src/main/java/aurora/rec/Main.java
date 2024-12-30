@@ -7,6 +7,7 @@ import aurora.rec.model.Hogar;
 import aurora.rec.ruleengine.Engine;
 import aurora.rec.servlet.StatusServlet;
 import aurora.rec.servlet.GetHogarServlet;
+import aurora.rec.servlet.GetHogaresServlet;
 import aurora.rec.servlet.RunHogarServlet;
 
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class Main {
 
         //List<Hogar> listaHogares = Hogar.getHogares();
 
-        runServer();
+        runServer(); //http://localhost:8080/api/hogar/1
         
     } 
 
@@ -53,7 +54,8 @@ public class Main {
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(new StatusServlet()), "/api/status");
         context.addServlet(new ServletHolder(new GetHogarServlet()), "/api/hogar/*");
-        context.addServlet(new ServletHolder(new RunHogarServlet()), "/api/run/*");
+        context.addServlet(new ServletHolder(new RunHogarServlet()), "/api/run");
+        context.addServlet(new ServletHolder(new GetHogaresServlet()), "/api/hogares");
 //        server.setHandler(context);
         
         ResourceHandler resourceHandler = new ResourceHandler();
