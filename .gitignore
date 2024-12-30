@@ -1,0 +1,15 @@
+target/classes/aurora/rec/servlet/ExecuteRuleServlet.class
+target/classes/aurora/rec/ruleengine/Engine.class
+target/classes/aurora/rec/model/Hogar.class
+.gitignore
+target/classes/aurora/rec/ruleengine/Engine.class
+target/classes/aurora/rec/servlet/StatusServlet.class
+target/classes/aurora/rec/model/Hogar.class
+target/classes/aurora/rec/model/Hogar.class
+target/classes/aurora/rec/ruleengine/Engine.class
+target/aurora-rec-1.0.jar
+target/classes/aurora-rec.code-workspace
+target/maven-archiver/pom.properties
+target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+src/main/resources/aurora-rec.code-workspace
