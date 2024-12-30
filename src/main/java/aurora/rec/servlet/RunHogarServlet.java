@@ -33,7 +33,7 @@ public class RunHogarServlet extends HttpServlet {
                     }*/
                     Main.engine.insertar(h);
                     //jresponse = "{ \"status\": \"ok\" }";
-                    jresponse = "{ \"status\": \"ok\", \"message\": \"The object has been inserted: " + h.getId() + "\" }";
+                    jresponse = "{ \"status\": \"ok\", \"message\": \"The last object has been inserted: " + h.getId() + "\" }";
                 }
                 Main.engine.firerules();
         //}
