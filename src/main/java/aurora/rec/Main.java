@@ -9,6 +9,7 @@ import aurora.rec.servlet.StatusServlet;
 import aurora.rec.servlet.GetHogarServlet;
 import aurora.rec.servlet.GetHogaresServlet;
 import aurora.rec.servlet.RunHogarServlet;
+import aurora.rec.servlet.CreateHogarServlet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +57,7 @@ public class Main {
         context.addServlet(new ServletHolder(new GetHogarServlet()), "/api/hogar/*");
         context.addServlet(new ServletHolder(new RunHogarServlet()), "/api/run");
         context.addServlet(new ServletHolder(new GetHogaresServlet()), "/api/hogares");
+        context.addServlet(new ServletHolder(new CreateHogarServlet()), "/api/createhogar");
 //        server.setHandler(context);
         
         ResourceHandler resourceHandler = new ResourceHandler();
