@@ -24,10 +24,11 @@ import java.util.ArrayList;
  */
 public class Engine {
 
-    KieSession kieSession = null;
+   KieSession kieSession = null;
     
-    public static final void main(final String[] args) {
-        Engine e = new Engine();
+    //public static final void main(final String[] args) {
+        //Engine engine = new Engine();
+        //int contador = 0;
         
         /**
          * Generar 10 hogares aleatorios
@@ -35,18 +36,19 @@ public class Engine {
          * para que las reglas puedan acceder a ellos
          */
 
-        for (int i = 0; i < 10; i++) {
-            Hogar hogar = new Hogar();
+        /*for (int i = 0; i < 10; i++) {
+            Hogar hogar = new Hogar(contador);
+            contador++;
             hogar.rellenarHogar(hogar);
-            e.run(hogar);
-        }
+            engine.insertar(hogar);
+        }*/
 
         /**
          * Calcular los consumos diarios por codigo postal
          * y las medias de consumo por codigo postal
          */
 
-        List<Hogar> listaHogares = Hogar.getHogares();
+        /*List<Hogar> listaHogares = Hogar.getHogares();
         Map<String, List<Double>> consumosPorCodigoPostal = new HashMap<>();
         Map<String, Double> mediasConsumo;
 
@@ -58,7 +60,7 @@ public class Engine {
             consumosPorCodigoPostal.get(codigoPostal).add(hogar.getConsumoElectricidadDiario());
         }
 
-        mediasConsumo = calcularMedias(consumosPorCodigoPostal);
+        mediasConsumo = calcularMedias(consumosPorCodigoPostal);*/
 
         /**
          * Imprimir los hogares generados (junto con sus atributos)
@@ -66,7 +68,7 @@ public class Engine {
          * y las medias de consumo por codigo postal
          */
 
-        System.out.println("Hogares generados: " + listaHogares.size()+ "\n");
+        /*System.out.println("Hogares generados: " + listaHogares.size()+ "\n");
         for (Hogar hogar : listaHogares) {
             System.out.println("Nombre del propietario: " + hogar.getNombre());
             System.out.println("Edad del propietario: " + hogar.getEdad());
@@ -87,26 +89,26 @@ public class Engine {
                 System.out.println(consumo + " kWh");
             }
             System.out.println();
-        }
+        }*/
 
-        System.out.println("Medias de consumo por codigo postal:");
+        /*System.out.println("Medias de consumo por codigo postal:");
         for (Map.Entry<String, Double> entry : mediasConsumo.entrySet()) {
             System.out.println("Codigo Postal: " + entry.getKey() + ", Media de Consumo: " + entry.getValue() + " kWh");
-        }
+        }*/
 
         /**
          * Ejecutar las reglas
          * y mostrar el mensaje generado para cada hogar
          */
 
-        e.firerules();
+        //engine.firerules();
 
-        System.out.println();
+        /*System.out.println();
         for (Hogar hogar : listaHogares) {
             System.out.println("Propietario: " + hogar.getNombre() + ", Mensaje: " + hogar.getMessage());
-        }
+        }*/
 
-    }
+    //}
 
     /*metodos extra*/
 
@@ -137,7 +139,7 @@ public class Engine {
     {
         KieServices kieServices = KieServices.Factory.get();
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
-        Resource drlResource = kieServices.getResources().newClassPathResource("rules.drl");
+        Resource drlResource = kieServices.getResources().newClassPathResource("rules/rules.drl");
         kieFileSystem.write(drlResource);
         kieServices.newKieBuilder(kieFileSystem).buildAll();
         KieRepository kieRepository = kieServices.getRepository();
@@ -149,7 +151,7 @@ public class Engine {
     /**
      * Inserta un objeto en la sesion, sin disparar las reglas todavia
      */
-    public void run(Object obj)
+    public void insertar(Object obj)
     {
         if (kieSession==null)
             init();

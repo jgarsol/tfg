@@ -5,9 +5,12 @@ import java.util.List;
 import java.util.Random;
 import java.util.Map;
 import java.util.HashMap;
+import aurora.rec.utils.JSONUtils; // Add this import statement
+
 
 public class Hogar {
     
+    private int id;
     private String nombre;
     private int edad;
     private String ciudadHogar;
@@ -20,7 +23,8 @@ public class Hogar {
     private String message;
     private static List<Hogar> hogares = new ArrayList<>();
     
-    public Hogar() {        
+    public Hogar(int contador) {        
+        this.id = contador;
         this.nombre = "Vacio";
         this.edad = 99999;
         this.ciudadHogar = "Vacio";
@@ -30,12 +34,18 @@ public class Hogar {
     }
 
     public Hogar(String nombre, int edad, String ciudadHogar, int codigoPostal, int numeroPersonasHogar, double consumoElectricidadDiario) {
+        this.id = new Random().nextInt(9000) + 1000;
         this.nombre = nombre;
         this.edad = edad;
         this.ciudadHogar = ciudadHogar;
         this.codigoPostal = codigoPostal;
         this.numeroPersonasHogar = numeroPersonasHogar;
         this.consumoElectricidadDiario = consumoElectricidadDiario;
+    }
+
+    public String toJSON()
+    {
+        return JSONUtils.toJSON(this);
     }
 
     public void rellenarHogar(Hogar hogar){
@@ -85,6 +95,10 @@ public class Hogar {
         double variacion = new Random().nextDouble() * 3.0; // Variación aleatoria entre 0 y 3
         this.consumoElectricidadDiario = baseConsumo + this.numeroPersonasHogar * (1 + new Random().nextDouble()) + variacion;
         this.consumoElectricidadDiario = Math.round(this.consumoElectricidadDiario * 100.0) / 100.0;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getNombre() {
