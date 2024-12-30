@@ -18,25 +18,25 @@ public class RunHogarServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
-        String pathInfo = req.getPathInfo(); 
+        //String pathInfo = req.getPathInfo(); 
         String jresponse = "{ \"status\": \"not ok\" }";
-        if (pathInfo != null && pathInfo.startsWith("/")) {
-            String idStr = pathInfo.substring(1); 
-            int id = Integer.parseInt(idStr); 
+        //if (pathInfo != null && pathInfo.startsWith("/")) {
+            //String idStr = pathInfo.substring(1); 
+            //int id = Integer.parseInt(idStr); 
                 for(Hogar h : Main.listaHogares)
                 {
-                 /**  if (id == h.getId())
+                    /**if (id == h.getId())
                     {
+                        Main.engine.insertar(h);
                         
                         jresponse = "{ \"status\": \"ok\" }";
-                    }
-                */ 
-                Main.engine.insertar(h);
-                jresponse = "{ \"status\": \"ok\" }";
-                //jresponse = "{ \"status\": \"ok\", \"message\": \"objeto insertado: " + h.getId() + "\" }";
+                    }*/
+                    Main.engine.insertar(h);
+                    //jresponse = "{ \"status\": \"ok\" }";
+                    jresponse = "{ \"status\": \"ok\", \"message\": \"The object has been inserted: " + h.getId() + "\" }";
                 }
-            Main.engine.firerules();
-        }
+                Main.engine.firerules();
+        //}
         resp.getWriter().write(jresponse);        
     }
     

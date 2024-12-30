@@ -24,7 +24,7 @@ then
     $hogar.setMessage("El consumo diario de electricidad está fuera del promedio para su código postal");
 end*/
 
-rule "Consumo superior al promedio"
+rule "Consumption above average"
 when
     $hogar: Hogar($codigoPostal: codigoPostal, $consumo: consumoElectricidadDiario)
     $mediaConsumo: Double() from accumulate(
@@ -33,10 +33,11 @@ when
     )
     eval($consumo > $mediaConsumo)
 then
-    $hogar.setMessage("El consumo diario de electricidad es superior al promedio para su código postal! QUÉ MAL!!");
+    $hogar.setMessage("The daily electricity consumption is above the average (" + $mediaConsumo + ") for your postal code! You should consider lowering it!");
+    helper(drools);
 end
 
-rule "Consumo inferior o igual al promedio"
+rule "Consumption below or equal to average"
 when
     $hogar: Hogar($codigoPostal: codigoPostal, $consumo: consumoElectricidadDiario)
     $mediaConsumo: Double() from accumulate(
@@ -45,5 +46,6 @@ when
     )
     eval($consumo <= $mediaConsumo)
 then
-    $hogar.setMessage("El consumo diario de electricidad es inferior o igual al promedio para su código postal! QUÉ BIEN!!");
+    $hogar.setMessage("The daily electricity consumption is below or equal to the average (" + $mediaConsumo + ") for your postal code! Congratulations!");
+    helper(drools);
 end
