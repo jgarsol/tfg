@@ -41,6 +41,7 @@ public class Hogar {
         this.codigoPostal = codigoPostal;
         this.numeroPersonasHogar = numeroPersonasHogar;
         this.consumoElectricidadDiario = consumoElectricidadDiario;
+        hogares.add(this);
     }
 
     public String toJSON()

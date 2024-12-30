@@ -20,10 +20,15 @@ public class GetHogaresServlet extends HttpServlet {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");                
         
-        for(Hogar h : Main.listaHogares)
-        {
+        resp.getWriter().write("[");
+        for (int i = 0; i < Main.listaHogares.size(); i++) {
+            Hogar h = Main.listaHogares.get(i);
             resp.getWriter().write(h.toJSON());
+            if (i < Main.listaHogares.size() - 1) {
+            resp.getWriter().write(",");
+            }
         }
+        resp.getWriter().write("]");
     }
 
 }
