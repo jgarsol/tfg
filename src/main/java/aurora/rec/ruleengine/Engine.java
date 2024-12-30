@@ -26,9 +26,9 @@ public class Engine {
 
    KieSession kieSession = null;
     
-    //public static final void main(final String[] args) {
-        //Engine engine = new Engine();
-        //int contador = 0;
+    public static final void main(final String[] args) {
+        Engine engine = new Engine();
+        int contador = 0;
         
         /**
          * Generar 10 hogares aleatorios
@@ -36,19 +36,19 @@ public class Engine {
          * para que las reglas puedan acceder a ellos
          */
 
-        /*for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             Hogar hogar = new Hogar(contador);
             contador++;
             hogar.rellenarHogar(hogar);
             engine.insertar(hogar);
-        }*/
+        }
 
         /**
          * Calcular los consumos diarios por codigo postal
          * y las medias de consumo por codigo postal
          */
 
-        /*List<Hogar> listaHogares = Hogar.getHogares();
+        List<Hogar> listaHogares = Hogar.getHogares();
         Map<String, List<Double>> consumosPorCodigoPostal = new HashMap<>();
         Map<String, Double> mediasConsumo;
 
@@ -60,7 +60,7 @@ public class Engine {
             consumosPorCodigoPostal.get(codigoPostal).add(hogar.getConsumoElectricidadDiario());
         }
 
-        mediasConsumo = calcularMedias(consumosPorCodigoPostal);*/
+        mediasConsumo = calcularMedias(consumosPorCodigoPostal);
 
         /**
          * Imprimir los hogares generados (junto con sus atributos)
@@ -68,7 +68,7 @@ public class Engine {
          * y las medias de consumo por codigo postal
          */
 
-        /*System.out.println("Hogares generados: " + listaHogares.size()+ "\n");
+        System.out.println("Hogares generados: " + listaHogares.size()+ "\n");
         for (Hogar hogar : listaHogares) {
             System.out.println("Nombre del propietario: " + hogar.getNombre());
             System.out.println("Edad del propietario: " + hogar.getEdad());
@@ -89,26 +89,26 @@ public class Engine {
                 System.out.println(consumo + " kWh");
             }
             System.out.println();
-        }*/
+        }
 
-        /*System.out.println("Medias de consumo por codigo postal:");
+        System.out.println("Medias de consumo por codigo postal:");
         for (Map.Entry<String, Double> entry : mediasConsumo.entrySet()) {
             System.out.println("Codigo Postal: " + entry.getKey() + ", Media de Consumo: " + entry.getValue() + " kWh");
-        }*/
+        }
 
         /**
          * Ejecutar las reglas
          * y mostrar el mensaje generado para cada hogar
          */
 
-        //engine.firerules();
+        engine.firerules();
 
-        /*System.out.println();
+        System.out.println();
         for (Hogar hogar : listaHogares) {
             System.out.println("Propietario: " + hogar.getNombre() + ", Mensaje: " + hogar.getMessage());
-        }*/
+        }
 
-    //}
+    }
 
     /*metodos extra*/
 

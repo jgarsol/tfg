@@ -25,11 +25,12 @@ import org.eclipse.jetty.servlet.ServletHolder;
 public class Main {
     
     public static String HOME = ".";
-    public static Engine engine = new Engine();
+    public static Engine engine = null;
     public static List<Hogar> listaHogares = new ArrayList<>();
     public static void main(String args[])
     {
         System.out.println("This is the demo recommender system for the AURORA system");
+        engine = new Engine();
         int contador = 0;
 
         for (int i = 0; i < 10; i++) {

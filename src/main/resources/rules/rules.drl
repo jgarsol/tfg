@@ -1,9 +1,9 @@
 package com.rule
 
 import aurora.rec.model.Hogar
-import function aurora.rec.Main.helper;
 import java.util.List;
 import java.util.Map;
+import function aurora.rec.ruleengine.RuleUtils.helper;
 
 /**rule "Vives en Madrid?"
 	when
