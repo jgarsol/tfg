@@ -25,13 +25,17 @@ public class RunHogarServlet extends HttpServlet {
             int id = Integer.parseInt(idStr); 
                 for(Hogar h : Main.listaHogares)
                 {
-                    if (id == h.getId())
+                 /**  if (id == h.getId())
                     {
-                        Main.engine.insertar(h);
-                        Main.engine.firerules();
+                        
                         jresponse = "{ \"status\": \"ok\" }";
                     }
+                */ 
+                Main.engine.insertar(h);
+                jresponse = "{ \"status\": \"ok\" }";
+                //jresponse = "{ \"status\": \"ok\", \"message\": \"objeto insertado: " + h.getId() + "\" }";
                 }
+            Main.engine.firerules();
         }
         resp.getWriter().write(jresponse);        
     }

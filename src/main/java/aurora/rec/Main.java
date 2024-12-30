@@ -33,7 +33,7 @@ public class Main {
         engine = new Engine();
         int contador = 0;
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 30; i++) {
             Hogar hogar = new Hogar(contador);
             contador++;
             hogar.rellenarHogar(hogar);
