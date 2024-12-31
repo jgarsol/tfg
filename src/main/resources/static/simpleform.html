@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Hogar</title>
+</head>
+<body>
+    <h1>Create New Hogar</h1>
+    <form id="hogar-form" action="/api/chpersonalizado" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad" required><br><br>
+
+        <label for="ciudadHogar">Ciudad Hogar:</label>
+        <input type="text" id="ciudadHogar" name="ciudadHogar" required><br><br>
+
+        <label for="codigoPostal">Código Postal:</label>
+        <input type="number" id="codigoPostal" name="codigoPostal" required><br><br>
+
+        <label for="numeroPersonasHogar">Número de Personas en el Hogar:</label>
+        <input type="number" id="numeroPersonasHogar" name="numeroPersonasHogar" required><br><br>
+
+        <label for="consumoElectricidadDiario">Consumo de Electricidad Diario:</label>
+        <input type="number" step="0.01" id="consumoElectricidadDiario" name="consumoElectricidadDiario" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
