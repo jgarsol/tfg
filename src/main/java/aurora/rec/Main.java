@@ -34,7 +34,7 @@ public class Main {
     {
         System.out.println("This is the demo recommender system for the AURORA system");
         engine = new Engine();
-        int contador = 0;
+        int contador = 1;
 
         for (int i = 0; i < 30; i++) {
             Hogar hogar = new Hogar(contador);

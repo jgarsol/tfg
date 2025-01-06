@@ -93,9 +93,9 @@ public class Hogar {
 
     public void calcularConsumo() {
         double baseConsumo = 7.0;
-        double variacion = new Random().nextDouble() * 3.0; // Variación aleatoria entre 0 y 3
-        this.consumoElectricidadDiario = baseConsumo + this.numeroPersonasHogar * (1 + new Random().nextDouble()) + variacion;
-        this.consumoElectricidadDiario = Math.round(this.consumoElectricidadDiario * 100.0) / 100.0;
+        double variacion = new Random().nextDouble() * 3.0; // Variacion aleatoria entre 0 y 3
+        this.consumoElectricidadDiario = baseConsumo + this.numeroPersonasHogar * (1 + new Random().nextDouble()) + variacion; // Consumo base + personas * (1 + variacion)
+        this.consumoElectricidadDiario = Math.round(this.consumoElectricidadDiario * 100.0) / 100.0; // Redondear a dos decimales
     }
 
     public int getId() {

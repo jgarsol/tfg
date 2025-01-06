@@ -78,19 +78,12 @@
                         <li class="nav-item" role="presentation" id="user-tab">
                             <button class="nav-link active" id="details-tab" data-bs-toggle="tab" data-bs-target="#details" type="button" role="tab" aria-controls="details" aria-selected="true">Details</button>
                         </li>
-                        <li class="nav-item" role="presentation" id="history-tab">
-                            <button class="nav-link" id="history-tab" data-bs-toggle="tab" data-bs-target="#history" type="button" role="tab" aria-controls="history" aria-selected="false">History</button>
-                        </li>
                     </ul>
                     <div class="tab-content mt-3" id="userTabContent">
                         <div class="tab-pane active" id="details-content">
                             <h5>"Hogar" Information</h5>
                             <p>Select a "Hogar" from the list on the left to see their details.</p>
                             <pre id="iduserinfo"></pre>
-                        </div>
-                        <div class="tab-pane" id="history-content" style="display: none;">
-                            <h5>History</h5>
-                            <p>This is the history tab. Here you can display "Hogar" activity or other relevant information.</p>
                         </div>
                     </div>
 
@@ -148,7 +141,6 @@
                 //document.getElementById('create-user-btn').addEventListener('click', createUser);
                 document.getElementById('refresh-list-btn').addEventListener('click', () => fetchHogares(userList));
                 document.getElementById('user-tab').addEventListener('click', () => switchTab('details'));
-                document.getElementById('history-tab').addEventListener('click', () => switchTab('history'));
                 document.getElementById('new-hogar-form').addEventListener('submit', submitForm);
             }
 

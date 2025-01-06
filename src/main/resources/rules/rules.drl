@@ -33,7 +33,7 @@ when
     )
     eval($consumo > $mediaConsumo)
 then
-    $hogar.setMessage("The daily electricity consumption is above the average (" + $mediaConsumo + ") for your postal code! You should consider lowering it!");
+    $hogar.setMessage("El consumo diario de electricidad esta por encima del promedio (" + $mediaConsumo + ") para su codigo postal! Deberia considerar reducirlo!");
     helper(drools);
 end
 
@@ -46,6 +46,6 @@ when
     )
     eval($consumo <= $mediaConsumo)
 then
-    $hogar.setMessage("The daily electricity consumption is below or equal to the average (" + $mediaConsumo + ") for your postal code! Congratulations!");
+    $hogar.setMessage("El consumo diario de electricidad esta por debajo o igual al promedio (" + $mediaConsumo + ") para su codigo postal! No es necesaria ninguna modificacion.");
     helper(drools);
 end
